@@ -1,14 +1,40 @@
+import java.util.Random;
+
 public class TempSensor
 {
-	/* once fully developed, this class will monitor the input from an analog temperature sensor and 
-	provide the input value to the calling method.  For our purposes, this is just going to generate
-	random temperatures */
-	
-	
-	int[] tempArray = new int[] {45,64,65,66,67,68,69,70,71,72,73,85};
-	/* TODO add an integer variable to hold a random number */
-	
-	/* TODO add an integer variable to hold a value randomly selected from the array of temperatures */
-	
-	/* TODO create a public method that will return the value of the randomly selected temperature from the array */
+    /* 
+       This class pretends to be a real temperature sensor.
+       In real life, a thermostat reads the temperature from hardware.
+       But for this assignment, we simulate that by randomly picking
+       a temperature from a list of possible values. 
+    */
+
+    // A list of temperatures the "sensor" might read
+    int[] tempArray = new int[] {45, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 85};
+
+    // This will store the random index chosen from the array above
+    int randIndex;
+
+    // This stores the actual temperature from the array
+    int tempValue;
+
+    // Random object used to generate the random index
+    Random rand = new Random();
+
+    /*
+       This method imitates taking a temperature reading in a room.
+       Every time the SmartThermostat calls this method, we randomly pick
+       one temperature from the array to act like a real reading.
+    */
+    public int takeTemp()
+    {
+        // pick a random index between 0 and (array length - 1)
+        randIndex = rand.nextInt(tempArray.length);
+
+        // select the temperature at that index
+        tempValue = tempArray[randIndex];
+
+        // return the chosen temperature so the furnace or AC can use it
+        return tempValue;
+    }
 }
