@@ -19,13 +19,16 @@ public class UI
 		return 68;
 	}
 	/* TODO add get method to return the rMode, initially hardcoded to "heat" for testing purposes */
-	public String getRunMode()
+	public String getRunMode(boolean commandMode)
 	{
+		if(!commandMode){
+			return "cool";
+		}
 		return "heat";
 	}
 	public void printStatus(int currTemp, boolean commandMode)
 	{
-		System.out.println("Hold Temp: " + getHoldTemp() + " | Mode: " + getRunMode() + " | Furnace State: " + convertBool(getRunState()) + "| Current Temp: " + currTemp + " | Command Mode: " + convertBool(commandMode));
+		System.out.println("Hold Temp: " + getHoldTemp() + " | Mode: " + getRunMode(commandMode) + " | Furnace State: " + convertBool(getRunState()) + "| Current Temp: " + currTemp + " | Command Mode: " + convertBool(commandMode));
 	}
 	
 	private String convertBool(boolean isOn)

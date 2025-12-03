@@ -10,7 +10,7 @@ public class SmartThermostat
 		UI myUI = new UI();
 		TempSensor myTS = new TempSensor();
 		
-		String runMode = myUI.getRunMode();
+		String runMode = myUI.getRunMode(true);
 		
 		if(runMode == "heat")
 		{
